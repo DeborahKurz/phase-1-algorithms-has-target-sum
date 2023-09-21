@@ -1,17 +1,39 @@
 function hasTargetSum(array, target) {
-  // Write your algorithm here
+  for(let i = 0; i<array.length; i++){
+    for(let j = i+1; j<array.length; j++){
+      if(array[i] + array[j] === target) {
+        return true;
+      }
+    }
+  }
+  return false;
 }
 
 /* 
   Write the Big O time complexity of your function here
+  Quadratic Time 0(n²)
 */
 
 /* 
   Add your pseudocode here
+  //1. Write a function called hasTargetSum
+  //2. Add two arguments: array , target
+  3. Create two nested for loops (i, and j) to check each item in the array
+  4. Create an if statment in the second for loop to see if the sum equals 'target'
+  5. If the sum equals 'target', return true
+  6. Outside of the for loops, return false
 */
 
 /*
   Add written explanation of your solution here
+  I  am writing a function that takes two arguments and adds together two items in the first argument(an array), to see if they equual the second argument. The function will return true or false accordingly.
+
+  Write a function
+  Takes in two arguments
+  Check that to numbers in the 1st argument add up to the 2nd argument by using a for loop to check if there is another nubmer in the array with a sum of x.
+     If the two numbers equal the sum, return true.
+     Otherwise, continue searching the arguments
+  If none is found, return false.
 */
 
 // You can run `node index.js` to view these console logs
@@ -29,6 +51,16 @@ if (require.main === module) {
 
   console.log("Expecting: false");
   console.log("=>", hasTargetSum([1, 2, 5], 4));
+
+  console.log("");
+  
+  console.log("Expecting: false");
+  console.log("=>", hasTargetSum([0,8,4], 0))
+
+  console.log("");
+
+  console.log("Expecting: true");
+  console.log("=>", hasTargetSum([100,1000, 10, 10], 20))
 }
 
 module.exports = hasTargetSum;
