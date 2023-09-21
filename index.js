@@ -1,13 +1,37 @@
-function hasTargetSum(array, target) {
+//Has Target Sum Lab Solution Refractored Optimized Code:
+// function hasTargetSum(array, target){
+//   const seenNumbers = {}
+//   for(const number of array) {
+//     const complement = target - number;
+//     if(complement in seenNumbers) return true;
+//     seenNumbers[number] = true;
+//   }
+//   return false;
+// }
+
+
+//Has Target Sum Lab Solution Optimized Code:
+function hasTargetSum(array, target){
+  const seenNumbers = {}
   for(let i = 0; i<array.length; i++){
-    for(let j = i+1; j<array.length; j++){
-      if(array[i] + array[j] === target) {
-        return true;
-      }
-    }
+    const complement = target-array[i];
+    if(seenNumbers[complement]) return true;
+    seenNumbers[array[i]] = true
   }
   return false;
 }
+
+//My Original Code:
+// function hasTargetSum(array, target) {
+//   for(let i = 0; i<array.length; i++){
+//     for(let j = i+1; j<array.length; j++){
+//       if(array[i] + array[j] === target) {
+//         return true;
+//       }
+//     }
+//   }
+//   return false;
+// }
 
 /* 
   Write the Big O time complexity of your function here
@@ -61,6 +85,16 @@ if (require.main === module) {
 
   console.log("Expecting: true");
   console.log("=>", hasTargetSum([100,1000, 10, 10], 20))
+  
+  console.log("");
+
+  console.log("Expecting: false");
+  console.log("=>", hasTargetSum([1], 1))
+
+  console.log("");
+
+  console.log("Expecting: true");
+  console.log("=>", hasTargetSum([-1, 6], 5))
 }
 
 module.exports = hasTargetSum;
